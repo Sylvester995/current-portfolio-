@@ -68,6 +68,13 @@
   .lead{color:var(--ink-soft);max-width:680px;font-size:1.12rem}
   .lead + .lead{margin-top:18px}
   .lead b{color:var(--ink);font-weight:600}
+  .xp-label{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);margin:34px 0 12px}
+  .xp{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;
+    padding:18px 22px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;max-width:680px}
+  .xp .role{font-family:'Fraunces';font-weight:600;font-size:1.15rem}
+  .xp .org{color:var(--accent);font-weight:600}
+  .xp .date{margin-left:auto;color:var(--ink-soft);font-size:.9rem}
 
   /* SKILLS */
   .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;
@@ -127,6 +134,8 @@
     .proj h3{font-size:1.35rem}
     .proj .links{text-align:left;flex-direction:row;gap:20px;margin-top:8px}
     .contact h2{font-size:clamp(2rem,10vw,3rem)}
+    .xp{flex-direction:column;align-items:flex-start;gap:6px}
+    .xp .date{margin-left:0}
   }
 </style>
 </head>
@@ -166,9 +175,16 @@
   <!-- ABOUT -->
   <section id="about" class="wrap">
     <div class="sec-head"><span class="num">(01)</span><h2>About</h2></div>
-    <p class="lead">I'm a software engineer and graduate of <b>Rauf Denktaş University</b>, where I paired an academic foundation with hands-on web development. What began as curiosity for HTML, CSS, and JavaScript grew into a real focus on frontend craft — building clean, user-friendly interfaces where design meets function.</p>
+    <p class="lead">I'm a <b>junior full-stack developer</b> and software engineering graduate of <b>Rauf Denktaş University</b>, where I paired an academic foundation with hands-on web development. What began as curiosity for HTML, CSS, and JavaScript grew into a real focus on frontend craft — building clean, user-friendly interfaces where design meets function.</p>
     <p class="lead">Since then I've moved into <b>full-stack development</b>, shipping complete applications with AI-assisted workflows that let me build and iterate dramatically faster. I designed and deployed the software behind <b>AfriCarbon</b>, my charcoal business in Liberia — from a customer-facing storefront to a full production, sales, and profit management system. That gave me a builder's-eye view of the whole product: data, backend, interface, and deployment.</p>
     <p class="lead">I care about turning concepts into polished, reliable products — and I'm looking for ambitious projects and collaborators to build the next one with.</p>
+
+    <p class="xp-label">Experience</p>
+    <div class="xp">
+      <span class="role">Founder &amp; Full-Stack Developer</span>
+      <span class="org">AfriCarbon</span>
+      <span class="date">2024 – Present</span>
+    </div>
   </section>
 
   <!-- SKILLS -->
