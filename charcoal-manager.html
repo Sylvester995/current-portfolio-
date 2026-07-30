@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Charcoal Manager — Case Study · Sylvester McDaniel Kollie</title>
+<meta name="description" content="Case study: Charcoal Manager, a full-stack business management platform built end to end by Sylvester McDaniel Kollie." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f5f0; --paper-2:#ffffff; --ink:#161311; --ink-soft:#5c554f;
+    --line:#e4dfd6; --accent:#2563eb; --accent-soft:#e3edfd; --max:920px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-family:'Fraunces';font-weight:900;font-size:1.1rem;letter-spacing:-.02em}
+  .brand em{color:var(--accent);font-style:normal}
+  .back{font-size:.9rem;font-weight:500;color:var(--ink-soft)}
+  .back:hover{color:var(--accent)}
+
+  .hero{padding:70px 0 40px}
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .hero h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:900;letter-spacing:-.03em;margin:14px 0 0}
+  .hero .sub{font-size:clamp(1.1rem,2.4vw,1.35rem);color:var(--ink-soft);max-width:640px;margin-top:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{font-size:.82rem;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);
+    padding:6px 12px;border-radius:999px}
+
+  .demo{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+  .demo .txt{flex:1;min-width:220px}
+  .demo h3{font-size:1.05rem}
+  .demo .cred{font-size:.88rem;color:var(--ink-soft);margin-top:4px}
+  .demo .cred code{background:var(--paper);border:1px solid var(--line);border-radius:6px;
+    padding:2px 7px;font-size:.85rem}
+  .btn{padding:12px 22px;border-radius:999px;font-weight:600;font-size:.92rem;
+    background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:.2s;white-space:nowrap}
+  .btn:hover{background:var(--accent);border-color:var(--accent)}
+
+  section{padding:38px 0}
+  .sec h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .sec h2 .n{color:var(--accent);font-size:.9rem;font-family:'Fraunces';margin-right:8px}
+  .sec p{color:var(--ink-soft);max-width:680px;margin-top:10px}
+  .sec p b{color:var(--ink);font-weight:600}
+
+  .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;
+    background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:18px}
+  .feat .card{background:var(--paper-2);padding:22px}
+  .feat h3{font-size:1.02rem;margin-bottom:6px}
+  .feat p{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+  .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .layer{flex:1;min-width:180px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:14px;padding:18px}
+  .layer .lbl{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .layer .val{font-weight:600;margin-top:6px}
+  .layer .desc{font-size:.85rem;color:var(--ink-soft);margin-top:4px}
+
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
+  .shot{background:var(--paper-2);border:1px dashed var(--line);border-radius:14px;
+    aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--ink-soft);font-size:.85rem;padding:16px;overflow:hidden}
+  .shot img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+  .shots figure{margin:0}
+  .shots figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:8px;text-align:center}
+  .reports-dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:18px}
+  .rep{display:flex;align-items:center;gap:12px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:14px;padding:16px 18px;transition:.2s}
+  .rep:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .rep .ic{font-family:'Fraunces';font-weight:700;color:var(--accent);font-size:.72rem;border:1px solid var(--accent);
+    border-radius:6px;padding:4px 7px;white-space:nowrap}
+  .rep .t{font-weight:600;font-size:.92rem}
+  .rep .s{font-size:.8rem;color:var(--ink-soft)}
+
+  .decision{border-top:1px solid var(--line);padding:20px 0}
+  .decision h3{font-size:1.1rem;font-weight:600}
+  .decision p{color:var(--ink-soft);margin-top:6px;max-width:700px}
+
+  .cta{text-align:center;padding:56px 0 20px}
+  .cta h2{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em}
+  .cta p{color:var(--ink-soft);margin:14px auto 24px;max-width:460px}
+
+  footer{border-top:1px solid var(--line);text-align:center;color:var(--ink-soft);font-size:.85rem;padding:32px 0}
+
+  @media(max-width:640px){ section{padding:30px 0} .hero{padding:48px 0 30px} }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Sylvester<em>.</em></div>
+    <a class="back" href="index.html#work">← Back to portfolio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Case Study</p>
+    <h1>Charcoal Manager</h1>
+    <p class="sub">The full-stack platform that runs my charcoal business in Liberia — from live operations to financial planning — designed, built, and deployed end to end, solo.</p>
+    <div class="chips">
+      <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Supabase</span>
+      <span class="chip">PostgreSQL</span><span class="chip">Auth</span><span class="chip">PWA</span><span class="chip">Vercel</span>
+    </div>
+
+    <div class="demo">
+      <div class="txt">
+        <h3>Try the live demo</h3>
+        <p class="cred">Read-only viewer account — <code>viewer@charcoal.com</code> · <code>viewer123</code></p>
+      </div>
+      <a class="btn" href="https://charcoal-manager.afropinnacle.com/login" target="_blank" rel="noopener">Open live app ↗</a>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">01</span>The problem</h2>
+    <p>Running a charcoal business means juggling production, sales, expenses, and reinvestment decisions — usually across notebooks, memory, and scattered spreadsheets. It's hard to know the true profit, harder to plan ahead, and easy for money to leak in the gaps. I wanted a single source of truth that could capture what's happening day to day and turn it into decisions I could actually act on.</p>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">02</span>What it does</h2>
+    <div class="feat">
+      <div class="card"><h3>Operations tracking</h3><p>Records production batches, sales, and profit as they happen, with a full batch lifecycle from bags produced to after-burn to sold and remaining.</p></div>
+      <div class="card"><h3>Detailed cost model</h3><p>Captures expenses across a dozen real categories — transport, forest rent, chainsaw fuel, labour, delivery and more — so true costs and margins are always visible.</p></div>
+      <div class="card"><h3>Dashboards &amp; charts</h3><p>Revenue-vs-cost-vs-profit and cost-breakdown visualisations turn raw records into an at-a-glance picture of the business.</p></div>
+      <div class="card"><h3>Financial projections</h3><p>Forecasts monthly and annual revenue across conservative, base, optimistic, and growth scenarios, with real per-bag economics and ROI.</p></div>
+      <div class="card"><h3>Reinvestment planner</h3><p>An interactive planner splits profit between reinvestment and savings — with per-batch overrides and conservative/balanced/aggressive presets.</p></div>
+      <div class="card"><h3>Downloadable reports</h3><p>Generates professional PDF business summary, batch, and sales reports for record-keeping and decisions.</p></div>
+      <div class="card"><h3>Roles &amp; access control</h3><p>Super-admin, admin, manager, and viewer roles with user management and secure authentication.</p></div>
+      <div class="card"><h3>Installable PWA</h3><p>Fast, mobile-first, and installable for use in the field, priced in Liberian Dollars.</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">03</span>Architecture</h2>
+    <p>A clean separation between an intuitive front end, a managed backend, and hosting — chosen to let one person build, ship, and maintain a reliable product.</p>
+    <div class="stack">
+      <div class="layer"><div class="lbl">Frontend</div><div class="val">React + TypeScript</div><div class="desc">Responsive, mobile-first UI delivered as an installable PWA.</div></div>
+      <div class="layer"><div class="lbl">Backend & Data</div><div class="val">Supabase + PostgreSQL</div><div class="desc">Data model, REST APIs, authentication, and role-based access for secure, structured records.</div></div>
+      <div class="layer"><div class="lbl">Delivery</div><div class="val">Vercel + Git</div><div class="desc">Continuous deployment with a fast, global edge.</div></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">04</span>A look inside</h2>
+    <p>Screens from the live app.</p>
+    <div class="shots">
+      <figure><div class="shot"><img src="assets/cm-dashboard.png" alt="Dashboard" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-dashboard.png'"></div><figcaption>Dashboard — revenue, costs, profit &amp; cost breakdown</figcaption></figure>
+      <figure><div class="shot"><img src="assets/cm-reports.png" alt="Reports" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-reports.png'"></div><figcaption>Reports — downloadable PDF business, batch &amp; sales reports</figcaption></figure>
+      <figure><div class="shot"><img src="assets/cm-reinvestment.png" alt="Reinvestment planner" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-reinvestment.png'"></div><figcaption>Reinvestment planner — split profit, per-batch, presets</figcaption></figure>
+      <figure><div class="shot"><img src="assets/cm-projections.png" alt="Projections" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-projections.png'"></div><figcaption>Projections — scenarios &amp; per-bag economics</figcaption></figure>
+      <figure><div class="shot"><img src="assets/cm-batch.png" alt="Record batch" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-batch.png'"></div><figcaption>Record batch — detailed production cost model</figcaption></figure>
+      <figure><div class="shot"><img src="assets/cm-admin.png" alt="Admin panel" onerror="this.style.display='none';this.parentNode.textContent='Add assets/cm-admin.png'"></div><figcaption>Admin — roles &amp; user management</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">05</span>Reporting</h2>
+    <p>The app exports professional PDF reports on demand. Real reports contain live business and customer data, so they're not published here — happy to walk through them on request.</p>
+    <div class="feat">
+      <div class="card"><h3>Business Summary</h3><p>Total revenue, costs, and profit; profit-margin %; a performance table across all batches; and a cost breakdown by category.</p></div>
+      <div class="card"><h3>Batch Report</h3><p>Full cost breakdown for a single batch, bags produced vs after-burn, every sale from that batch, profit analysis, and unsold-bag value.</p></div>
+      <div class="card"><h3>Sales Report</h3><p>A full transaction log with actual prices, wholesale vs retail breakdown, total bags and revenue, and period totals.</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2><span class="n">06</span>Decisions &amp; challenges</h2>
+    <div class="decision">
+      <h3>Getting the financial logic right</h3>
+      <p>The hardest part wasn't the interface — it was the money. Projections, reinvestment logic, and report accuracy all had to be correct, because a real business relies on them. I worked through the data model and calculations step by step and validated every figure against actual sales and expenses before trusting it.</p>
+    </div>
+    <div class="decision">
+      <h3>Building AI-first, verifying by hand</h3>
+      <p>I used AI assistants across the build to move quickly, especially on backend logic that was newer territory for me. But I treated their output as a first draft — checking it with tests and first-principles reasoning so the result was reliable, not just fast.</p>
+    </div>
+    <div class="decision">
+      <h3>One person, whole product</h3>
+      <p>As the sole developer I chose a stack (React, Supabase, Vercel) that let me own everything from schema to UI to deployment without a team — trading breadth of tooling for speed and maintainability.</p>
+    </div>
+  </section>
+
+  <section class="cta wrap">
+    <h2>Want the full picture?</h2>
+    <p>Explore the live app with the demo account, or get in touch to talk through the code and decisions.</p>
+    <a class="btn" href="https://charcoal-manager.afropinnacle.com/login" target="_blank" rel="noopener">Open live demo ↗</a>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Sylvester McDaniel Kollie · <a href="index.html" style="color:var(--accent)">Back to portfolio</a></div></footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
